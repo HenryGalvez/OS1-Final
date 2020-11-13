@@ -1,5 +1,4 @@
 FROM node:12.18.1
-ENV NODE_ENV=production
 
 WORKDIR /app
 
@@ -9,4 +8,4 @@ RUN npm install
 
 COPY . .
 
-CMD [ "node", "src/index.js" ]
+CMD [ "node", "run", "start" ]
