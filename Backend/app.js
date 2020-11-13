@@ -22,12 +22,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.all('/*', function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next();
-});
-
 /*app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
 
@@ -42,7 +36,11 @@ app.all('/*', function (req, res, next) {
       res.send();
   });
 });*/
-
+app.all('*', function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
 app.use('/', indexRouter);
 app.use('/api/user', usersRouter);
 app.use('/api/task', taskRouter);

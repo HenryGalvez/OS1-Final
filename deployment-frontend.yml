@@ -15,5 +15,6 @@ spec:
       containers:
       - name: frontend-container
         image: pixelcodegg/f-final:1.0
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
