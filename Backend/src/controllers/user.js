@@ -21,7 +21,8 @@ module.exports = {
         const { email, password } = req.body
         const user = await User.findOne({ email })
         if (!user) return res.status(400).send({ message: "this email does not exists" })
-        if (!user.password != password) res.status(401).send({ message: 'Wrong password' })
+        if (user.password != password) res.status(401).send({ message: 'Wrong password' })
+        const token = gererateToken(user);
         return res.status(200).json({ token: token, message: "Successfully!!" })
         //bcrypt.compare(password, user.password, function (err, result) {
            /* if (result == true) {
