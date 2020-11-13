@@ -1,24 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { baseURL } from './shared/baseURL';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TasksService {
 
-  private URL = 'http://localhost:3000/api'
+  private URL = baseURL + 'task/'
 
   constructor(private http: HttpClient) { }
 
   getTasks() {
-    return this.http.get(this.URL + '/task/tasks')
+    return this.http.get(this.URL + 'tasks')
   }
 
   createTask(data: any) {
-    return this.http.post(this.URL + '/task/insert-task', data);
+    return this.http.post(this.URL + 'insert-task', data);
   }
 
   delteTask(data: any){
-    return this.http.post(this.URL + '/task/delete-task', data);
+    return this.http.post(this.URL + 'delete-task', data);
   }
 }
