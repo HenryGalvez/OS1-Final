@@ -30,24 +30,26 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express["static"](path.join(__dirname, 'public')));
-/*app.all('/*', function (req, res, next) {
+app.all('/*', function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
-});*/
+});
+/*app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
 
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*'); // authorized headers for preflight requests
+  // authorized headers for preflight requests
   // https://developer.mozilla.org/en-US/docs/Glossary/preflight_request
-
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
-  app.options('*', function (req, res) {
-    // allowed XHR methods  
-    res.header('Access-Control-Allow-Methods', 'GET, PATCH, PUT, POST, DELETE, OPTIONS');
-    res.send();
+
+  app.options('*', (req, res) => {
+      // allowed XHR methods  
+      res.header('Access-Control-Allow-Methods', 'GET, PATCH, PUT, POST, DELETE, OPTIONS');
+      res.send();
   });
-});
+});*/
+
 app.use('/', indexRouter);
 app.use('/api/user', usersRouter);
 app.use('/api/task', taskRouter); // catch 404 and forward to error handler

@@ -22,13 +22,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-/*app.all('/*', function (req, res, next) {
+app.all('/*', function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
-});*/
+});
 
-app.use((req, res, next) => {
+/*app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
 
   // authorized headers for preflight requests
@@ -41,7 +41,7 @@ app.use((req, res, next) => {
       res.header('Access-Control-Allow-Methods', 'GET, PATCH, PUT, POST, DELETE, OPTIONS');
       res.send();
   });
-});
+});*/
 
 app.use('/', indexRouter);
 app.use('/api/user', usersRouter);
