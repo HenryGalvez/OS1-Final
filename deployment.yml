@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: task-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: task
+  template:
+    metadata:
+      labels:
+        app: task
+    spec:
+      containers:
+      - name: frontend-container
+        image: pixelcodegg/f-final:1.0
+        ports:
+        - containerPort: 80
+      - name: backend-containter
+        image: pixelcodegg/b-final:1.0

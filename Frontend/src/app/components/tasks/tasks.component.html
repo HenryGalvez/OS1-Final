@@ -1,0 +1,45 @@
+<!-- Button trigger Dialog -->
+<!--button type="button" class="btn btn-danger" (click)="openDialog()">
+    Create a new Taks
+</button-->
+<button (click)="openDialog()" class="ml-3" mat-fab color="green" aria-label="">
+    <mat-icon>add</mat-icon>
+</button>
+
+<div class="row">
+    <div *ngFor="let t of tasks" class="col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12" style="min-width:300px;min-height:300px;">
+        <div class="card shadow-lg" style="width:100%;height:100%;">
+            <!--a href="#"><img class="img-fluid card-img-top" style="height:200px;" src="bourdelle.jpg" /></a-->
+            <div class="card-header">
+                <p class="h4 text-uppercase text-left">{{t.title}}</p>
+                <p class="text-muted text-right mb-0 pb-0">{{t.dateEnd | date: 'medium'}}</p>
+            </div>
+            <div class="card-body">
+                <p class="h6">{{t.description}}</p>
+            </div>
+            <div class="card-footer text-center">
+                <!--button mat-fab color="warn" aria-label="">
+                    <mat-icon>delete</mat-icon>
+                </button-->
+                <button (click)="checkComplete(t)" class="ml-3" mat-fab color="primary" aria-label="">
+                    <mat-icon>done</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="tasks.length == 0" class="col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12" style="min-width:300px;min-height:300px;">
+        <div class="card shadow-lg" style="width:100%;height:100%;">
+            <div class="card-body">
+                <p class="h1 text-center text-break">Add one Task, click in the icon</p>
+                <p class="h1 text-center">
+                    +
+                </p>
+            </div>
+            <!--div class="card-footer text-center">
+                <button (click)="openDialog()" class="ml-3" mat-fab color="green" aria-label="">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div-->
+        </div>
+    </div>
+</div>

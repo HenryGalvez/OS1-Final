@@ -1,0 +1,8 @@
+# we take the image of ngix in its latest version
+FROM nginx:latest
+
+# we copy the files of our api inside actual folder and send inside container folder
+COPY ./dist/Frontend /usr/share/nginx/html/ 
+
+# we open the port 80
+EXPOSE 80

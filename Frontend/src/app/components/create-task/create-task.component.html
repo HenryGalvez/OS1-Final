@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>Create new Task</h2>
+<mat-dialog-content class="mat-typography">
+    <form class="user" [formGroup]="formG">
+
+        <div class="d-flex justify-content-between">
+            <mat-form-field class="form-user pr-3">
+                <mat-label>Title</mat-label>
+                <input matInput name="title" [formControl]="title" placeholder="Title" disabled>
+                <mat-error *ngIf="title.hasError('required')">
+                    Title is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-user pl-3" color="accent" appearance="fill">
+                <mat-label>Finish Date</mat-label>
+                <input matInput [formControl]="dateEnd" [matDatepicker]="picker1">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+                <mat-error *ngIf="dateEnd.hasError('required')">
+                    Date is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        
+        <mat-form-field class="form-user">
+            <mat-label>Description</mat-label>
+            <textarea matInput name="description" [formControl]="description" placeholder="Description"></textarea>
+        </mat-form-field>
+
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button cdkFocusInitial (click)="insertTask()">Create</button>
+</mat-dialog-actions>
