@@ -17,7 +17,6 @@ spec:
         image: pixelcodegg/f-final:1.0
         ports:
         - containerPort: 80
-      containers:
       - name: backend-containter
         image: pixelcodegg/b-final:1.0
         ports:
