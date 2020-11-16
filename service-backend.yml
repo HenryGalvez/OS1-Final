@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: backend-service
-  namespace: so1-final
+  namespace: os1-final
 spec:
   selector:
     app: backend
