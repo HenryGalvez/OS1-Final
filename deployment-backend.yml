@@ -2,8 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend-deployment
+  namespace: so1-final
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: backend
@@ -13,7 +14,7 @@ spec:
         app: backend
     spec:
       containers:
-      - name: backend-containter
+      - name: backend-container
         image: pixelcodegg/b-final:1.0
         imagePullPolicy: Always
         ports:
