@@ -25,6 +25,9 @@ export class SigninComponent implements OnInit {
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('token')){
+      this.router.navigate(['/tasks'])
+    }
   }
 
   signIn() {

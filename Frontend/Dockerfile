@@ -4,5 +4,9 @@ FROM nginx:latest
 # we copy the files of our api inside actual folder and send inside container folder
 COPY ./dist/Frontend /usr/share/nginx/html/ 
 
+WORKDIR /etc/nginx/conf.d
+
+COPY ./default.conf .
+
 # we open the port 80
 EXPOSE 80

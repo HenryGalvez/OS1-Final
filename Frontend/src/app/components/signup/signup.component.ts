@@ -32,12 +32,15 @@ export class SignupComponent implements OnInit {
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('token')){
+      this.router.navigate(['/tasks'])
+    }
   }
 
   signUp() {
     this.authService.signUp(this.formG.value)
     .subscribe((res: any) => {
-      console.log(res)
+      //console.log(res)
       this.toastr.success(res.message);
       localStorage.setItem('token', res.token)
       this.router.navigate(['/tasks'])
